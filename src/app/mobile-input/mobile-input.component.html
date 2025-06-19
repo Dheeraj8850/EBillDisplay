@@ -1,0 +1,7 @@
+<form (ngSubmit)="onSubmit()">
+  <label for="mobileNumber">Enter Mobile Number:</label>
+  <input type="text" id="mobileNumber" [(ngModel)]="mobileNumber" name="mobileNumber" required>
+  <button type="submit">Submit</button>
+</form>
+<p *ngIf="errorMessage">{{ errorMessage }}</p>
+

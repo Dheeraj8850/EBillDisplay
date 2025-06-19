@@ -1,0 +1,97 @@
+<app-flash-video-popup
+  *ngIf="showPopup"
+  [flashVideoURL]="'/assets/Softcon.mp4'"
+  (popupClosed)="showPopup = false"
+>
+  Video popup
+</app-flash-video-popup>
+
+<div class="invoice-container" *ngIf="invoice">
+  <!-- *ngIf="invoice" -->
+
+  <!-- Auto Scrolling Header Images -->
+  <!-- <div class="auto-scroll no-print" #scrollContainer *ngIf="headerImageList?.length">
+    <div class="image-track">
+      <img *ngFor="let img of headerImageList" [src]="img" alt="Header Image" />
+      <img *ngFor="let img of headerImageList" [src]="img" alt="Header Image" />
+    </div>
+  </div> -->
+  <!-- Header Image Slideshow -->
+<div class="auto-scroll no-print" *ngIf="headerImageList?.length">
+  <div class="image-wrapper">
+    <img [src]="headerImageList[currentHeaderIndex]" alt="Header Image" />
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="progressWidth"></div>
+    </div>
+  </div>
+</div>
+
+  <div class="for-download">
+
+    <!-- Rating Section -->
+    <div class="rating-container">
+      <p class="rating-label">Rate Us</p>
+      <div class="star-rating">
+        <ng-container *ngFor="let star of [].constructor(maxStars); let i = index">
+          <span
+            class="star"
+            [class.filled]="i < userRating"
+            (click)="setRating(i + 1)"
+            (mouseover)="userRating = i + 1"
+            (mouseleave)="userRating = userRating"
+          >★</span>
+        </ng-container>
+      </div>
+      <p *ngIf="hasRated" class="feedback-message">
+        Thank you for your feedback!
+      </p>
+    </div>
+
+    <!-- PDF Viewer -->
+    <pdf-viewer
+      [src]="pdfUrl"
+      [render-text]="true"
+      [show-all]="true"
+      [original-size]="false"
+      style="width: 100%; height: 600px"
+    ></pdf-viewer>
+
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+      <a *ngIf="socialLinks.facebook" [href]="socialLinks.facebook" target="_blank">
+        <fa-icon [icon]="faFacebook"></fa-icon>
+      </a>
+      <a *ngIf="socialLinks.instagram" [href]="socialLinks.instagram" target="_blank">
+        <fa-icon [icon]="faInstagram"></fa-icon>
+      </a>
+      <a *ngIf="socialLinks.twitter" [href]="socialLinks.twitter" target="_blank">
+        <fa-icon [icon]="faTwitter"></fa-icon>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer Image Scroll -->
+  <!-- <div class="auto-scroll no-print" #footerScrollContainer *ngIf="footerImageList?.length">
+    <div class="image-track">
+      <img *ngFor="let img of footerImageList" [src]="img" alt="Footer Image" />
+      <img *ngFor="let img of footerImageList" [src]="img" alt="Footer Image" />
+    </div>
+  </div> -->
+  <div class="auto-scroll no-print" *ngIf="footerImageList?.length">
+    <div class="image-wrapper">
+      <img [src]="footerImageList[currentFooterIndex]" alt="Footer Image" />
+      <div class="progress-bar">
+        <div class="progress" [style.width.%]="footerProgressWidth"></div>
+      </div>
+    </div>
+    </div>
+
+  <!-- PDF Download Button -->
+  <div class="pdf-section no-print">
+    <button (click)="downloadPDF()">Download Invoice PDF</button>
+  </div>
+</div>
+
+<!-- Loading/Error Messages -->
+<div *ngIf="loading" class="loading">Loading...</div>
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>

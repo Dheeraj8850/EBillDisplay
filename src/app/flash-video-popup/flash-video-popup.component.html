@@ -1,0 +1,10 @@
+<div class="overlay" >
+  <div class="popup">
+    <div class="video-container">
+      <button class="close-btn" (click)="closePopup()" aria-label="Close popup">&times;</button>
+      <video  [src]="flashVideoURL" autoplay  muted  controls></video>
+      <source [attr.src]="flashVideoURL" type="video/mp4" />
+      </div>
+  </div>
+</div>
+

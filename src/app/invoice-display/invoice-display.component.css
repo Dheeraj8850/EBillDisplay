@@ -1,0 +1,300 @@
+/* ========== Layout & Container ========== */
+.invoice-container {
+  width: 100%;
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== Invoice Details ========== */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.bill {
+  border-top: 2px dashed #ccc;
+  border-bottom: 2px dashed #ccc;
+  padding: 15px 0;
+}
+
+.bill-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.bill-row span {
+  font-weight: 600;
+}
+
+/* ========== Auto-Scrolling Images ========== */
+.auto-scroll {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+}
+
+.image-track {
+  display: inline-flex;
+  gap: 12px;
+  padding-left: 10px;
+  animation: scroll-x 20s linear infinite;
+}
+
+.image-track img {
+  height: 150px;
+  width: auto;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-track img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.auto-scroll:hover .image-track {
+  animation-play-state: paused;
+}
+
+/* ========== Rating Section ========== */
+.rating-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.rating-label {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  font-size: 2.5rem;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 12px;
+}
+
+.star {
+  color: #ccc;
+  padding: 0 5px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.star:hover {
+  transform: scale(1.1);
+  color: #ffcc00;
+}
+
+.star.filled {
+  color: gold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.feedback-message {
+  margin-top: 10px;
+  color: green;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #eaffea;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* ========== Social Media Icons ========== */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  font-size: 28px;
+  color: #3b5998;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #000;
+}
+
+/* ========== PDF Section ========== */
+.pdf-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pdf-section button {
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pdf-section button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.pdf-section button:active {
+  background-color: #003d7a;
+}
+
+/* ========== Utility Classes ========== */
+.no-print {
+  display: block;
+}
+
+.for-download.pdf-mode .no-print {
+  display: none !important;
+}
+
+.loading,
+.error {
+  text-align: center;
+  margin-top: 20px;
+  color: red;
+}
+
+/* ========== Overlay Video Popup ========== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  text-align: center;
+}
+
+video {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.cta {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+}
+
+/* ========== Responsive Design ========== */
+@media (max-width: 768px) {
+  .star-rating {
+    font-size: 2rem;
+  }
+
+  .rating-label {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .star-rating {
+    font-size: 1.5rem;
+  }
+
+  .rating-label {
+    font-size: 0.9rem;
+  }
+}
+
+
+.auto-scroll {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image-wrapper img {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.progress {
+  height: 100%;
+  background-color: #007bff;
+  transition: width 3s linear;
+  width: 0%;
+}
